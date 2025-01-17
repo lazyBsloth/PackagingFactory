@@ -1,10 +1,6 @@
 ﻿using System.Reflection;
 using UnityEngine;
 
-
-
-
-
 namespace UnityFactorySceneHDRP
 {
 	public class ArmIK : MonoBehaviour
@@ -28,6 +24,7 @@ namespace UnityFactorySceneHDRP
 		{
 			_upperArmLength = Vector3.Distance(_arm1.position, _arm2.position);
 			_foreArmLength = Vector3.Distance(_arm2.position, _arm3.position);
+			Debug.Log("upper: " + _upperArmLength + "fore: " +_foreArmLength);
 		}
 
 
@@ -36,7 +33,7 @@ namespace UnityFactorySceneHDRP
 		{
 			float arm1Angle = Mathf.Atan2((_target.position - _stand.position).x, (_target.position - _stand.position).z) * Mathf.Rad2Deg;
 			_stand.rotation = Quaternion.Euler(0, arm1Angle - 90, 0);
-
+			//Debug.Log("Stand Rotation: " + _stand.rotation);
 			#if UNITY_EDITOR
 			_upperArmLength = Vector3.Distance(_arm1.position, _arm2.position);
 			_foreArmLength = Vector3.Distance(_arm2.position, _arm3.position);
